@@ -44,7 +44,7 @@ export function ContactPage({ onTriggerToast }: ContactPageProps) {
               HEADQUARTERS &amp; EXPORT DIVISION
             </span>
             <h3 style={{ fontSize: '24px', fontWeight: 700, marginTop: '8px', marginBottom: '16px' }}>
-              Group FNT — Cablond Terminations
+              Cablond Terminations
             </h3>
             <p style={{ color: '#94A3B8', fontSize: '15px', lineHeight: '1.6', marginBottom: '28px' }}>
               Precision Non-Ferrous Metallurgical Manufacturing &amp; Industrial Cable Accessories.
@@ -53,7 +53,7 @@ export function ContactPage({ onTriggerToast }: ContactPageProps) {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', fontSize: '15px' }}>
               <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
                 <MapPin size={20} color="var(--accent)" />
-                <span>Group FNT Industrial Zone, Precision Highway</span>
+                <span>Cablond Industrial Zone, Precision Highway</span>
               </div>
               <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
                 <Mail size={20} color="var(--accent)" />
@@ -61,7 +61,7 @@ export function ContactPage({ onTriggerToast }: ContactPageProps) {
               </div>
               <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
                 <Phone size={20} color="var(--accent)" />
-                <span>+91 (Group FNT Direct Export Desk)</span>
+                <span>+91 (Direct Export Desk)</span>
               </div>
               <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
                 <Clock size={20} color="var(--accent)" />
@@ -86,7 +86,7 @@ export function ContactPage({ onTriggerToast }: ContactPageProps) {
               <CheckCircle2 size={56} color="#10B981" style={{ margin: '0 auto 20px' }} />
               <h2 className="sub-title" style={{ color: 'var(--secondary)' }}>Enquiry Received</h2>
               <p className="body-text" style={{ fontSize: '16px', marginTop: '12px' }}>
-                Thank you for contacting Cablond. An export specialist from Group FNT will get back to you shortly.
+                Thank you for contacting Cablond. An export specialist will get back to you shortly.
               </p>
               <button
                 className="btn btn-secondary btn-sm"

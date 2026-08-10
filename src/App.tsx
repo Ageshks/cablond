@@ -13,7 +13,9 @@
  * All data lives in src/data/catalog.ts
  */
 
-import { useEffect, useMemo, useState, useCallback } from 'react'
+const BASE = import.meta.env.BASE_URL
+
+import { useEffect, useMemo, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import {
   ArrowUpRight,
@@ -40,6 +42,7 @@ import { ProductDetailPage } from './pages/ProductDetailPage'
 import { AboutPage }        from './pages/AboutPage'
 import { CataloguePage }    from './pages/CataloguePage'
 import { ContactPage }      from './pages/ContactPage'
+import { CertificationsPage } from './pages/CertificationsPage'
 
 import './App.css'
 
@@ -128,17 +131,14 @@ export function App() {
       <div className="subtle-grid" />
 
       {/* ── Sticky frosted-glass navbar ──────────────────── */}
-      <header className="navbar-wrapper">
-        <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
-          <a href="#/" className="brand">
-            <img src="/logo.png" alt="Cablond Brand Logo" />
-            <div className="brand-text">
-              <span className="brand-title">CABLOND</span>
-              <span className="brand-subtitle">BY GROUP FNT</span>
-            </div>
-          </a>
+      <header className={`site-header ${isScrolled ? 'scrolled' : ''}`}>
+        {/* Brand logo — outside the nav pill, top left */}
+        <a href="#/" className="brand-logo">
+          <img src={`${BASE}logo.png`} alt="Cablond Brand Logo" />
+        </a>
 
-          {/* Desktop links */}
+        {/* Centered nav pill — navigation items only */}
+        <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
           <div className="nav-menu">
             <a href="#/"       className={`nav-link ${currentPath === '/'       ? 'active' : ''}`}>Home</a>
             <a href="#/about"  className={`nav-link ${currentPath === '/about'  ? 'active' : ''}`}>About</a>
@@ -239,29 +239,31 @@ export function App() {
             </div>
 
             <a href="#/catalogue" className={`nav-link ${currentPath === '/catalogue' ? 'active' : ''}`}>Catalogue</a>
+            <a href="#/certifications" className={`nav-link ${currentPath === '/certifications' ? 'active' : ''}`}>Certifications</a>
             <a href="#/contact"   className={`nav-link ${currentPath === '/contact'   ? 'active' : ''}`}>Contact</a>
           </div>
-
-          <div className="nav-actions">
-            <button className="search-trigger-btn" onClick={() => setSearchModalOpen(true)} aria-label="Search Products">
-              <Search size={15} />
-              <span>Search</span>
-              <span className="search-key">⌘K</span>
-            </button>
-            <button
-              className="menu-toggle-btn"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label="Toggle Navigation"
-            >
-              {mobileMenuOpen ? <X size={24} /> : <SlidersHorizontal size={24} />}
-            </button>
-          </div>
         </nav>
+
+        {/* Search & menu toggle — outside the nav pill, top right */}
+        <div className="nav-actions">
+          <button className="search-trigger-btn" onClick={() => setSearchModalOpen(true)} aria-label="Search Products">
+            <Search size={15} />
+            <span>Search</span>
+            <span className="search-key">⌘K</span>
+          </button>
+          <button
+            className="menu-toggle-btn"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle Navigation"
+          >
+            {mobileMenuOpen ? <X size={24} /> : <SlidersHorizontal size={24} />}
+          </button>
+        </div>
 
         {/* Mobile menu */}
         {mobileMenuOpen && (
           <div className="mobile-menu-overlay">
-            {[['#/', 'Home'], ['#/about', 'About'], ['#/products', 'Products Catalog'], ['#/catalogue', 'Catalogue'], ['#/contact', 'Contact & RFQ']].map(([href, label]) => (
+            {[['#/', 'Home'], ['#/about', 'About'], ['#/products', 'Products Catalog'], ['#/catalogue', 'Catalogue'], ['#/certifications', 'Certifications'], ['#/contact', 'Contact & RFQ']].map(([href, label]) => (
               <a key={href} href={href} className="nav-link" onClick={() => setMobileMenuOpen(false)}>
                 {label}
               </a>
@@ -303,6 +305,7 @@ export function App() {
         )}
 
         {currentPath === '/catalogue' && <CataloguePage onTriggerToast={triggerToast} />}
+        {currentPath === '/certifications' && <CertificationsPage />}
         {currentPath === '/contact'   && <ContactPage   onTriggerToast={triggerToast} />}
       </main>
 
@@ -321,7 +324,7 @@ export function App() {
             >
               <div className="modal-header">
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexGrow: 1 }}>
-                  <Search size={20} color="#1E3A8A" />
+                  <Search size={20} color="var(--copper)" />
                   <input
                     autoFocus
                     value={searchQuery}
@@ -349,7 +352,7 @@ export function App() {
                       <div>
                         <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
                           <span style={{ fontSize: '11px', color: 'var(--primary)', fontWeight: '700', textTransform: 'uppercase' }}>{p.category}</span>
-                          <span style={{ fontSize: '10px', color: '#B45309', background: 'rgba(245,158,11,0.15)', padding: '1px 6px', borderRadius: '4px', fontWeight: '700' }}>{p.subcategory}</span>
+                          <span style={{ fontSize: '10px', color: 'var(--copper-dark)', background: 'rgba(184,115,51,0.15)', padding: '1px 6px', borderRadius: '4px', fontWeight: '700' }}>{p.subcategory}</span>
                         </div>
                         <h4 style={{ fontSize: '17px', color: 'var(--secondary)', margin: '4px 0 2px' }}>{p.name}</h4>
                         <p style={{ fontSize: '13px', color: 'var(--text-secondary)' }}>{p.material ?? p.standard}</p>
@@ -469,14 +472,10 @@ export function App() {
         <div className="footer-grid">
           <div className="footer-brand">
             <div className="brand">
-              <img src="/logo.png" alt="Cablond Logo" />
-              <div className="brand-text">
-                <span className="brand-title">CABLOND</span>
-                <span className="brand-subtitle">BY GROUP FNT</span>
-              </div>
+              <img src={`${BASE}logo.png`} alt="Cablond Logo" />
             </div>
             <p>
-              Cablond is a premier industrial brand by Group FNT, manufacturing precision cable lugs, cable glands,
+              Cablond is a premier industrial brand, manufacturing precision cable lugs, cable glands,
               connectors, and flexible conduits for global export.
             </p>
           </div>
@@ -506,15 +505,15 @@ export function App() {
           <div>
             <h4 className="footer-col-title">Global Contact</h4>
             <ul className="footer-links">
-              <li style={{ display: 'flex', gap: '8px', alignItems: 'center' }}><Mail size={14} color="#F59E0B" /> export@cablond.com</li>
-              <li style={{ display: 'flex', gap: '8px', alignItems: 'center' }}><Phone size={14} color="#F59E0B" /> +91 (Group FNT Direct)</li>
-              <li style={{ display: 'flex', gap: '8px', alignItems: 'center' }}><Globe size={14} color="#F59E0B" /> Exporting to 19+ Countries</li>
+              <li style={{ display: 'flex', gap: '8px', alignItems: 'center' }}><Mail size={14} color="var(--copper-light)" /> export@cablond.com</li>
+              <li style={{ display: 'flex', gap: '8px', alignItems: 'center' }}><Phone size={14} color="var(--copper-light)" /> +91 (Export Direct)</li>
+              <li style={{ display: 'flex', gap: '8px', alignItems: 'center' }}><Globe size={14} color="var(--copper-light)" /> Exporting to 19+ Countries</li>
             </ul>
           </div>
         </div>
 
         <div className="footer-bottom">
-          <p>© {new Date().getFullYear()} Cablond (Group FNT). All Rights Reserved.</p>
+          <p>© {new Date().getFullYear()} Cablond. All Rights Reserved.</p>
           <div style={{ display: 'flex', gap: '20px' }}>
             <a href="#/">Privacy Policy</a>
             <a href="#/">Terms of Supply</a>

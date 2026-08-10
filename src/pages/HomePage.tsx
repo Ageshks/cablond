@@ -127,24 +127,19 @@ export function HomePage({ onOpenProduct, activeRegion, setActiveRegion }: HomeP
       <section style={{
         position: 'relative',
         width: '100%',
-        height: '100vh',
-        minHeight: '640px',
+        height: 'calc(100vh - 90px)',
+        minHeight: '600px',
         overflow: 'hidden',
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center',
-        marginTop: 'calc(-74px - 12px - 16px)', /* Pull up behind the sticky navbar */
-        paddingTop: 'calc(74px + 12px + 16px)'   /* Push content down below navbar */
+        justifyContent: 'center'
       }}
       className="hero-video-section"
       >
-        {/* Video fill */}
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          src="/result.mp4"
+        {/* Static image fill */}
+        <img
+          src="https://images.unsplash.com/photo-1586864387789-628af9feed72?auto=format&fit=crop&w=1920&q=85"
+          alt="Cablond precision cable terminations"
           style={{
             position: 'absolute',
             inset: 0,
@@ -195,7 +190,7 @@ export function HomePage({ onOpenProduct, activeRegion, setActiveRegion }: HomeP
               letterSpacing: '0.08em'
             }}>
               <Sparkles size={13} />
-              <span>ENGINEERED FOR EXCELLENCE • GROUP FNT</span>
+              <span>ENGINEERED FOR EXCELLENCE</span>
             </div>
 
             <h1 style={{
@@ -209,7 +204,7 @@ export function HomePage({ onOpenProduct, activeRegion, setActiveRegion }: HomeP
             }}>
               Precision in every
               <br />
-              <em style={{ color: 'var(--accent)', fontStyle: 'normal' }}>termination.</em>
+              <em style={{ color: 'var(--copper-light)', fontStyle: 'normal' }}>termination.</em>
             </h1>
 
             <p style={{
@@ -267,9 +262,9 @@ export function HomePage({ onOpenProduct, activeRegion, setActiveRegion }: HomeP
           <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(15,23,42,0.92) 0%, rgba(15,23,42,0.4) 60%, rgba(15,23,42,0.15) 100%)' }} />
 
           <div style={{ position: 'absolute', inset: 0, padding: '50px 60px', display: 'flex', flexDirection: 'column', justifyContent: 'center', maxWidth: '640px', color: '#FFFFFF', zIndex: 2 }}>
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(245, 158, 11, 0.2)', border: '1px solid rgba(245, 158, 11, 0.4)', padding: '6px 14px', borderRadius: '9999px', width: 'fit-content', marginBottom: '20px' }}>
-              <Clapperboard size={16} color="var(--accent)" />
-              <span style={{ fontSize: '12px', fontWeight: 700, color: 'var(--accent)', letterSpacing: '0.08em' }}>INDUSTRIAL TECHNOLOGY STREAM</span>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(184, 115, 51, 0.2)', border: '1px solid rgba(184, 115, 51, 0.4)', padding: '6px 14px', borderRadius: '9999px', width: 'fit-content', marginBottom: '20px' }}>
+              <Clapperboard size={16} color="var(--copper-light)" />
+              <span style={{ fontSize: '12px', fontWeight: 700, color: 'var(--copper-light)', letterSpacing: '0.08em' }}>INDUSTRIAL TECHNOLOGY STREAM</span>
             </div>
 
             <h2 className="section-title" style={{ color: '#FFFFFF', fontSize: '38px', lineHeight: 1.15 }}>
@@ -324,7 +319,7 @@ export function HomePage({ onOpenProduct, activeRegion, setActiveRegion }: HomeP
               <div className="stat-icon"><BarChart3 size={24} /></div>
               <div className="stat-value"><AnimatedNumber value={30} suffix="+" /></div>
               <div className="stat-label">Years Heritage</div>
-              <div className="stat-desc">Backing by Group FNT precision engineering</div>
+              <div className="stat-desc">Backing by precision engineering heritage</div>
             </div>
             <div className="stat-card">
               <div className="stat-icon"><Cpu size={24} /></div>
@@ -620,7 +615,7 @@ export function HomePage({ onOpenProduct, activeRegion, setActiveRegion }: HomeP
               </h4>
               <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
                 {activeRegionData.certifications.map(cert => (
-                  <span key={cert} style={{ border: '1px solid rgba(245,158,11,0.4)', color: 'var(--accent)', padding: '4px 10px', borderRadius: '6px', fontSize: '12px', fontWeight: '600' }}>
+                  <span key={cert} style={{ border: '1px solid rgba(184,115,51,0.4)', color: 'var(--copper-light)', padding: '4px 10px', borderRadius: '6px', fontSize: '12px', fontWeight: '600' }}>
                     ✓ {cert}
                   </span>
                 ))}
@@ -652,7 +647,7 @@ export function HomePage({ onOpenProduct, activeRegion, setActiveRegion }: HomeP
               <h3 className="mockup-brand" style={{ marginTop: '12px' }}>CABLE<br />TERMINATIONS</h3>
             </div>
             <div>
-              <p style={{ fontSize: '11px', color: '#94A3B8' }}>BY GROUP FNT</p>
+              <p style={{ fontSize: '11px', color: '#94A3B8' }}>CABLOND</p>
               <p style={{ fontSize: '12px', color: 'var(--accent)', fontWeight: '700', marginTop: '4px' }}>PRODUCT CATALOGUE 2026/27</p>
             </div>
           </div>

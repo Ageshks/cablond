@@ -43,7 +43,7 @@ export function CataloguePage({ onTriggerToast }: CataloguePageProps) {
             </h3>
           </div>
           <div>
-            <p style={{ fontSize: '11px', color: '#94A3B8' }}>GROUP FNT PRINT</p>
+            <p style={{ fontSize: '11px', color: '#94A3B8' }}>CABLOND PRINT</p>
             <p style={{ fontSize: '12px', color: 'var(--accent)', fontWeight: '700', marginTop: '4px' }}>
               ISSUE 4.0
             </p>
