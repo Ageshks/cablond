@@ -51,7 +51,7 @@ const categoryCovers = [
   },
   {
     category: 'Connectors',
-    image: 'https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?auto=format&fit=crop&w=1000&q=80',
+    image: 'https://rukmini1.flixcart.com/image/1500/1500/l1jmc280/wire-joint-connector/t/v/w/20-20-pc-female-insulated-spade-wire-crimp-connectors-erh-india-original-imagd364c3ufwah2.jpeg?q=70',
     icon: LinkIcon,
     itemCount: '4 Subcategories',
     desc: 'Copper ferrules, screw block connectors, split bolts & high-torque C-type taps.'
