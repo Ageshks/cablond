@@ -37,14 +37,14 @@ interface HomePageProps {
 const categoryCovers = [
   {
     category: 'Cable Lugs',
-    image: 'https://images.unsplash.com/photo-1586864387789-628af9feed72?auto=format&fit=crop&w=1000&q=80',
+    image: 'https://www.we-online.com/components/media/o61066v209%20Family_WA-CLUG_Tubular_Cable_Lugs_558xxxxx.jpg',
     icon: Layers,
     itemCount: '11 Subcategories',
     desc: 'Heavy-duty copper compression terminals, DIN 46235, bi-metallic & long barrel lugs.'
   },
   {
     category: 'Cable Glands',
-    image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1000&q=80',
+    image: 'https://probots.co.in/pub/media/catalog/product/cache/d8ddd0f9b0cd008b57085cd218b48832/p/g/pg36_metal_1.jpg',
     icon: Box,
     itemCount: '7 Subcategories',
     desc: 'IP68 weatherproof double compression BW, CW, A1/A2 glands & hazardous area kits.'
@@ -58,7 +58,7 @@ const categoryCovers = [
   },
   {
     category: 'Flexible Conduits',
-    image: 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=1000&q=80',
+    image: 'https://d91ztqmtx7u1k.cloudfront.net/ClientContent/Images/ExtraLarge/gi-flexible-conduit-25-mm-20251024143514016.jpg',
     icon: Disc,
     itemCount: '2 Subcategories',
     desc: 'Galvanised steel flexible conduits & PVC coated weatherproof conduit accessories.'
