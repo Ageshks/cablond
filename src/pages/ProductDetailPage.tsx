@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { ArrowUpRight, FileText, ShieldCheck, Zap, Award, CheckCircle2, ZoomIn } from 'lucide-react'
+import { ArrowUpRight, FileText, ShieldCheck, Zap, Award, CheckCircle2, ZoomIn, X } from 'lucide-react'
 import { products } from '../data/catalog'
 import { LazyImage } from '../components/LazyImage'
 
@@ -11,16 +11,19 @@ interface ProductDetailPageProps {
 export function ProductDetailPage({ slug, onOpenQuote }: ProductDetailPageProps) {
   const product = products.find(p => p.slug === slug) ?? products[0]
 
-  // Gallery tabs (Main Product photo, Technical drawing, Application photo, Dimensions diagram)
   const galleryViews = [
-    { id: 'main', label: 'Product Photo', src: product.image },
-    { id: 'drawing', label: 'Technical Drawing', src: 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=1000&q=80' },
-    { id: 'application', label: 'Industrial Application', src: 'https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=1000&q=80' },
-    { id: 'dimensions', label: 'Dimensions & Crimp Die', src: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1000&q=80' }
+    { id: 'main', label: 'Product & Drawing', src: product.image },
+    ...(product.dimensionCharts ?? []).map((chart, index) => ({
+      id: `dimensions-${index}`,
+      label: chart.label,
+      src: chart.image
+    }))
   ]
 
   const [activeView, setActiveView] = useState(galleryViews[0])
   const [isZoomed, setIsZoomed] = useState(false)
+  const [isChartZoomed, setIsChartZoomed] = useState(false)
+  const isDimensionChart = activeView.id.startsWith('dimensions-')
 
   return (
     <div style={{ maxWidth: '1280px', margin: '40px auto 100px', padding: '0 5vw' }}>
@@ -33,11 +36,11 @@ export function ProductDetailPage({ slug, onOpenQuote }: ProductDetailPageProps)
         <span style={{ color: 'var(--text-primary)', fontWeight: '600' }}>{product.name}</span>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.1fr', gap: '48px', alignItems: 'start' }}>
+      <div className="product-detail-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1.1fr', gap: '48px', alignItems: 'start' }}>
         {/* Product Gallery Container */}
         <div>
           <div
-            className="card-clean"
+            className="card-clean product-gallery"
             style={{
               position: 'relative',
               overflow: 'hidden',
@@ -49,21 +52,22 @@ export function ProductDetailPage({ slug, onOpenQuote }: ProductDetailPageProps)
             }}
             onMouseEnter={() => setIsZoomed(true)}
             onMouseLeave={() => setIsZoomed(false)}
+            onClick={() => isDimensionChart && setIsChartZoomed(true)}
           >
             <LazyImage
               src={activeView.src}
               alt={product.name}
+              objectFit="contain"
               style={{
                 width: '100%',
                 height: '100%',
-                objectFit: 'cover',
-                transform: isZoomed ? 'scale(1.25)' : 'scale(1)',
+                transform: !isDimensionChart && isZoomed ? 'scale(1.25)' : 'scale(1)',
                 transition: 'transform 0.4s ease'
               }}
             />
             <div style={{ position: 'absolute', bottom: '16px', right: '16px', background: 'rgba(15, 23, 42, 0.75)', backdropFilter: 'blur(8px)', color: '#FFF', padding: '6px 12px', borderRadius: '9999px', fontSize: '12px', display: 'flex', alignItems: 'center', gap: '6px' }}>
               <ZoomIn size={14} />
-              <span>Hover to Zoom</span>
+              <span>{isDimensionChart ? 'Click to Zoom' : 'Hover to Zoom'}</span>
             </div>
           </div>
 
@@ -92,7 +96,7 @@ export function ProductDetailPage({ slug, onOpenQuote }: ProductDetailPageProps)
           </div>
 
           {/* Feature Icons Row */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '12px', marginTop: '24px' }}>
+          <div className="product-feature-icons" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '12px', marginTop: '24px' }}>
             <div style={{ textAlign: 'center', padding: '16px 8px', background: 'var(--surface-alt)', borderRadius: '14px', border: '1px solid var(--border)' }}>
               <Zap size={20} color="var(--primary)" style={{ margin: '0 auto 6px' }} />
               <div style={{ fontSize: '11px', fontWeight: 700, color: 'var(--secondary)' }}>99.9% Pure</div>
@@ -149,11 +153,36 @@ export function ProductDetailPage({ slug, onOpenQuote }: ProductDetailPageProps)
               {product.standard && <tr><th>Applicable Standard</th><td>{product.standard}</td></tr>}
               {product.voltage && <tr><th>Voltage Rating</th><td>{product.voltage}</td></tr>}
               {product.tempRange && <tr><th>Operating Temp</th><td>{product.tempRange}</td></tr>}
+              {product.measurements && <tr><th>Catalogue Measurements</th><td>{product.measurements}</td></tr>}
               <tr><th>Recommended Application</th><td>{product.applications}</td></tr>
             </tbody>
           </table>
         </div>
       </div>
+      {isChartZoomed && isDimensionChart && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label="Enlarged dimension chart"
+          onClick={() => setIsChartZoomed(false)}
+          style={{ position: 'fixed', inset: 0, zIndex: 500, background: 'rgba(15, 23, 42, 0.88)', padding: '4vh 4vw', display: 'grid', placeItems: 'center', cursor: 'zoom-out' }}
+        >
+          <img
+            src={activeView.src}
+            alt={`${product.name} enlarged dimension chart`}
+            onClick={event => event.stopPropagation()}
+            style={{ maxWidth: '92vw', maxHeight: '88vh', objectFit: 'contain', background: '#fff', borderRadius: '12px', cursor: 'default' }}
+          />
+          <button
+            type="button"
+            aria-label="Close enlarged dimension chart"
+            onClick={() => setIsChartZoomed(false)}
+            style={{ position: 'fixed', top: '20px', right: '20px', border: 0, borderRadius: '999px', padding: '10px', color: '#fff', background: 'rgba(255, 255, 255, 0.16)', cursor: 'pointer' }}
+          >
+            <X size={22} />
+          </button>
+        </div>
+      )}
     </div>
   )
 }

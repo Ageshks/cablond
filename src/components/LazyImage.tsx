@@ -59,7 +59,7 @@ export function LazyImage({
           alt=""
           aria-hidden
           className="lazy-placeholder"
-          style={{ objectFit }}
+          style={{ width: '100%', height: '100%', display: 'block', objectFit }}
         />
       )}
 
@@ -72,7 +72,7 @@ export function LazyImage({
           decoding="async"
           onLoad={() => setLoaded(true)}
           className={`lazy-real ${loaded ? 'lazy-visible' : ''}`}
-          style={{ objectFit }}
+          style={{ width: '100%', height: '100%', display: 'block', objectFit }}
         />
       )}
     </div>

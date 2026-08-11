@@ -1,5 +1,70 @@
 import { Layers, Box, Link as LinkIcon, Disc } from 'lucide-react'
 import type { MainCategory, Product, RegionalMarket } from '../types'
+import copperCableLugs from '../assets/products/copper-cable-lugs.png'
+import nSeriesTerminals from '../assets/products/n-series-terminals.png'
+import dinSeriesTerminals from '../assets/products/din-series-terminals.png'
+import longBarrelTerminals from '../assets/products/long-barrel-terminals.png'
+import wirePinTerminals from '../assets/products/wire-pin-terminals.png'
+import biMetallicLugs from '../assets/products/bi-metallic-lugs.png'
+import preInsulatedTerminals from '../assets/products/pre-insulated-terminals.png'
+import splitBoltConnectors from '../assets/products/split-bolt-connectors.png'
+import cTypeConnectors from '../assets/products/c-type-connectors.png'
+import aluminiumCableTerminals from '../assets/products/aluminium-cable-terminals.png'
+import mechanicalCableLugs from '../assets/products/mechanical-cable-lugs.png'
+import ferrulesInLine from '../assets/products/ferrules-in-line.png'
+import screwConnectors from '../assets/products/screw-connectors.png'
+import bwBrassGlands from '../assets/products/bw-brass-glands.png'
+import cwBrassGlands from '../assets/products/cw-brass-glands.png'
+import a1a2BrassGlands from '../assets/products/a1a2-brass-glands.png'
+import e1wDoubleCompressionGlands from '../assets/products/e1w-double-compression-glands.png'
+import singleCompressionGlands from '../assets/products/single-compression-glands.png'
+import alcoGlands from '../assets/products/alco-glands.png'
+import cableGlandKits from '../assets/products/cable-gland-kits.png'
+import chart06 from '../assets/charts/page-06.png'
+import chart07 from '../assets/charts/page-07.png'
+import chart09 from '../assets/charts/page-09.png'
+import chart10 from '../assets/charts/page-10.png'
+import chart12 from '../assets/charts/page-12.png'
+import chart13 from '../assets/charts/page-13.png'
+import chart14 from '../assets/charts/page-14.png'
+import chart16 from '../assets/charts/page-16.png'
+import chart18 from '../assets/charts/page-18.png'
+import chart19 from '../assets/charts/page-19.png'
+import chart20 from '../assets/charts/page-20.png'
+import chart21 from '../assets/charts/page-21.png'
+import chart22 from '../assets/charts/page-22.png'
+import chart23 from '../assets/charts/page-23.png'
+import chart24 from '../assets/charts/page-24.png'
+import chart25 from '../assets/charts/page-25.png'
+import ferrulesChart from '../assets/charts/ferrules.png'
+import screwConnectorsChart from '../assets/charts/screw-connectors.png'
+import dinSeriesChart2 from '../assets/charts/din-series-2.png'
+import longBarrelChart from '../assets/charts/long-barrel.png'
+import splitBoltChart from '../assets/charts/split-bolt.png'
+import cTypeChart from '../assets/charts/c-type.png'
+
+const dimensionCharts = {
+  copper: [{ label: 'Dimensions 1', image: chart06 }, { label: 'Dimensions 2', image: chart07 }],
+  ferrules: [{ label: 'Dimensions', image: ferrulesChart }],
+  screwConnectors: [{ label: 'Dimensions', image: screwConnectorsChart }],
+  nSeries: [{ label: 'Dimensions', image: chart09 }],
+  din: [{ label: 'Dimensions 1', image: chart10 }, { label: 'Dimensions 2', image: dinSeriesChart2 }],
+  longBarrel: [{ label: 'Dimensions', image: longBarrelChart }],
+  wirePin: [{ label: 'Dimensions', image: chart12 }],
+  biMetallic: [{ label: 'Dimensions', image: chart13 }],
+  preInsulated: [{ label: 'Dimensions', image: chart14 }],
+  splitBolt: [{ label: 'Dimensions', image: splitBoltChart }],
+  cType: [{ label: 'Dimensions', image: cTypeChart }],
+  aluminium: [{ label: 'Dimensions', image: chart16 }],
+  mechanical: [{ label: 'Dimensions', image: chart18 }],
+  bw: [{ label: 'Dimensions', image: chart19 }],
+  cw: [{ label: 'Dimensions', image: chart20 }],
+  a1a2: [{ label: 'Dimensions', image: chart21 }],
+  e1w: [{ label: 'Dimensions', image: chart22 }],
+  single: [{ label: 'Dimensions', image: chart23 }],
+  alco: [{ label: 'Dimensions', image: chart24 }],
+  kits: [{ label: 'Kit dimensions', image: chart25 }]
+}
 
 // -------------------------------------------------------
 // NAVIGATION TREE  (matches user-specified hierarchy)
@@ -66,8 +131,9 @@ export const products: Product[] = [
     standard: 'BS 1977 / IEC 61238',
     voltage: 'Up to 33 kV',
     tempRange: '-55°C to +155°C',
-    image:
-      'https://images.unsplash.com/photo-1586864387789-628af9feed72?auto=format&fit=crop&w=1100&q=80'
+    measurements: 'Cable size 1.5–1000 mm²; stud hole Ø4.2–21 mm; overall length (J) 16–200 mm.',
+    dimensionCharts: dimensionCharts.copper,
+    image: copperCableLugs
   },
   {
     slug: 'n-series-terminals',
@@ -83,8 +149,9 @@ export const products: Product[] = [
     standard: 'BS 1977 Spec',
     voltage: 'Up to 33 kV',
     tempRange: '-50°C to +150°C',
-    image:
-      'https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1100&q=80'
+    measurements: 'Cable size 6–630 mm²; stud hole Ø5.2–21 mm; overall length (L) 25–148 mm.',
+    dimensionCharts: dimensionCharts.nSeries,
+    image: nSeriesTerminals
   },
   {
     slug: 'din-series-terminals',
@@ -100,8 +167,9 @@ export const products: Product[] = [
     standard: 'DIN 46235 Certified',
     voltage: 'Up to 36 kV',
     tempRange: '-55°C to +155°C',
-    image:
-      'https://images.unsplash.com/photo-1586864387789-628af9feed72?auto=format&fit=crop&w=1100&q=80'
+    measurements: 'Cable size 6–1000 mm²; M5–M20 stud holes; overall length (J) 30.5–195 mm.',
+    dimensionCharts: dimensionCharts.din,
+    image: dinSeriesTerminals
   },
   {
     slug: 'long-barrel-terminals',
@@ -117,8 +185,9 @@ export const products: Product[] = [
     standard: 'BS 1977 / ANSI/UL',
     voltage: 'Up to 35 kV',
     tempRange: '-50°C to +160°C',
-    image:
-      'https://images.unsplash.com/photo-1586864387789-628af9feed72?auto=format&fit=crop&w=1100&q=80'
+    measurements: 'Cable size 50–630 mm²; barrel Ø9.5–35 mm; overall length (J) 64–208 mm.',
+    dimensionCharts: dimensionCharts.longBarrel,
+    image: longBarrelTerminals
   },
   {
     slug: 'wire-pin-terminals',
@@ -134,8 +203,9 @@ export const products: Product[] = [
     standard: 'BS 1977',
     voltage: 'Up to 1 kV',
     tempRange: '-40°C to +120°C',
-    image:
-      'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1100&q=80'
+    measurements: 'Cable size 2.5–400 mm²; barrel Ø2.5–27 mm; overall length (J) 20–92 mm.',
+    dimensionCharts: dimensionCharts.wirePin,
+    image: wirePinTerminals
   },
   {
     slug: 'bi-metallic-lugs',
@@ -151,8 +221,9 @@ export const products: Product[] = [
     standard: 'IEC 61238-1-3',
     voltage: 'Up to 36 kV',
     tempRange: '-40°C to +130°C',
-    image:
-      'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1100&q=80'
+    measurements: 'Cable size 25–1300 mm²; palm hole Ø10.5–17 mm; overall length (L) 70–267 mm.',
+    dimensionCharts: dimensionCharts.biMetallic,
+    image: biMetallicLugs
   },
   {
     slug: 'aluminium-cable-terminals',
@@ -168,8 +239,9 @@ export const products: Product[] = [
     standard: 'IS 8309 / IEC Standard',
     voltage: 'Up to 36 kV',
     tempRange: '-40°C to +130°C',
-    image:
-      'https://images.unsplash.com/photo-1586864387789-628af9feed72?auto=format&fit=crop&w=1100&q=80'
+    measurements: 'Cable size 10–1000 mm²; barrel Ø4.4–43.5 mm; overall length (J) 28–190 mm.',
+    dimensionCharts: dimensionCharts.aluminium,
+    image: aluminiumCableTerminals
   },
   {
     slug: 'mechanical-cable-lugs',
@@ -185,8 +257,9 @@ export const products: Product[] = [
     standard: 'IEC 61238-1 Class A',
     voltage: 'Up to 42 kV',
     tempRange: '-30°C to +125°C',
-    image:
-      'https://images.unsplash.com/photo-1586864387789-628af9feed72?auto=format&fit=crop&w=1100&q=80'
+    measurements: 'Cable size 25–500 mm²; shear bolt configurations and dimensions as illustrated in the catalogue.',
+    dimensionCharts: dimensionCharts.mechanical,
+    image: mechanicalCableLugs
   },
   {
     slug: 'pre-insulated-terminals',
@@ -202,8 +275,9 @@ export const products: Product[] = [
     standard: 'DIN 46237 / UL 486A',
     voltage: 'Up to 600V',
     tempRange: '-20°C to +75°C',
-    image:
-      'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1100&q=80'
+    measurements: 'Cable size 1.5–16 mm²; ring/fork/pin styles; overall length (J) 18–45 mm.',
+    dimensionCharts: dimensionCharts.preInsulated,
+    image: preInsulatedTerminals
   },
   {
     slug: 'split-bolt-connectors',
@@ -219,8 +293,9 @@ export const products: Product[] = [
     standard: 'BS 2874',
     voltage: 'Up to 1 kV',
     tempRange: '-40°C to +150°C',
-    image:
-      'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1100&q=80'
+    measurements: 'Conductor range 1.5–240 mm²; split bolt profiles and dimensions as illustrated in the catalogue.',
+    dimensionCharts: dimensionCharts.splitBolt,
+    image: splitBoltConnectors
   },
   {
     slug: 'c-type-connectors',
@@ -236,8 +311,9 @@ export const products: Product[] = [
     standard: 'BS 2874 / IEEE 837',
     voltage: 'Up to 33 kV',
     tempRange: '-50°C to +150°C',
-    image:
-      'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1100&q=80'
+    measurements: 'C-type connector range and dimensional drawing are shown in the supplied Cablond catalogue.',
+    dimensionCharts: dimensionCharts.cType,
+    image: cTypeConnectors
   },
 
   // CONNECTORS
@@ -255,8 +331,9 @@ export const products: Product[] = [
     standard: 'BS 1977 / DIN 46267',
     voltage: 'Up to 36 kV',
     tempRange: '-40°C to +150°C',
-    image:
-      'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1100&q=80'
+    measurements: 'Cable size 1.5–1000 mm²; standard length 12–170 mm; long length 22–230 mm.',
+    dimensionCharts: dimensionCharts.ferrules,
+    image: ferrulesInLine
   },
   {
     slug: 'screw-connectors',
@@ -272,8 +349,9 @@ export const products: Product[] = [
     standard: 'BS 2874',
     voltage: 'Up to 1 kV',
     tempRange: '-30°C to +120°C',
-    image:
-      'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1100&q=80'
+    measurements: 'Cable size 10–300 mm²; barrel Ø4.4–23.5 mm; length (L) 30–65 mm; 2 or 4 screws.',
+    dimensionCharts: dimensionCharts.screwConnectors,
+    image: screwConnectors
   },
 
   // CABLE GLANDS
@@ -291,8 +369,9 @@ export const products: Product[] = [
     standard: 'BS 6121 Part 1 / EN 62444',
     voltage: 'Up to 1 kV',
     tempRange: '-20°C to +100°C',
-    image:
-      'https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1100&q=80'
+    measurements: 'Cable OD 8–93 mm; ISO entry thread 20–90 mm; gland length 28.5–112 mm.',
+    dimensionCharts: dimensionCharts.bw,
+    image: bwBrassGlands
   },
   {
     slug: 'cw-brass-glands',
@@ -308,8 +387,9 @@ export const products: Product[] = [
     standard: 'BS 6121 Part 1',
     voltage: 'Up to 1 kV',
     tempRange: '-30°C to +120°C',
-    image:
-      'https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1100&q=80'
+    measurements: 'Overall cable OD 17–90 mm; ISO entry thread 20–90 mm; gland length 47–90 mm.',
+    dimensionCharts: dimensionCharts.cw,
+    image: cwBrassGlands
   },
   {
     slug: 'a1a2-brass-glands',
@@ -325,8 +405,9 @@ export const products: Product[] = [
     standard: 'BS 6121 Part 1',
     voltage: 'Up to 1 kV',
     tempRange: '-20°C to +100°C',
-    image:
-      'https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1100&q=80'
+    measurements: 'Overall cable OD 8–78 mm; ISO entry thread 20–90 mm; gland length 22–45 mm.',
+    dimensionCharts: dimensionCharts.a1a2,
+    image: a1a2BrassGlands
   },
   {
     slug: 'single-compression-glands',
@@ -341,8 +422,9 @@ export const products: Product[] = [
     standard: 'BS 6121 Part 1',
     voltage: 'Up to 1 kV',
     tempRange: '-20°C to +100°C',
-    image:
-      'https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1100&q=80'
+    measurements: 'Single-compression dimensional range is provided in the catalogue drawing; cable ODs span 12–51 mm.',
+    dimensionCharts: dimensionCharts.single,
+    image: singleCompressionGlands
   },
   {
     slug: 'e1w-double-compression-glands',
@@ -358,8 +440,9 @@ export const products: Product[] = [
     standard: 'BS 6121 / IECEx Compatible',
     voltage: 'Up to 11 kV',
     tempRange: '-40°C to +140°C',
-    image:
-      'https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1100&q=80'
+    measurements: 'Maximum accepted cable OD 8–102 mm; BSC nipple sizes 5/8–4½ in; body sizes 13–103 mm.',
+    dimensionCharts: dimensionCharts.e1w,
+    image: e1wDoubleCompressionGlands
   },
   {
     slug: 'alco-glands',
@@ -375,8 +458,9 @@ export const products: Product[] = [
     standard: 'BS 6121 Standard',
     voltage: 'Up to 3.3 kV',
     tempRange: '-25°C to +110°C',
-    image:
-      'https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1100&q=80'
+    measurements: 'Cable OD 15.8–78 mm; ISO entry thread 20–75 mm; gland length 24–40 mm.',
+    dimensionCharts: dimensionCharts.alco,
+    image: alcoGlands
   },
   {
     slug: 'cable-gland-kits',
@@ -391,8 +475,9 @@ export const products: Product[] = [
     standard: 'BS 6121 Compliance',
     voltage: 'Up to 1 kV',
     tempRange: '-30°C to +110°C',
-    image:
-      'https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1100&q=80'
+    measurements: 'Locknuts are available in 16–75 mm sizes; kits include an earth tag, PVC shroud and locknut.',
+    dimensionCharts: dimensionCharts.kits,
+    image: cableGlandKits
   },
 
   // FLEXIBLE CONDUITS

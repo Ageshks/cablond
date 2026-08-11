@@ -18,6 +18,8 @@ export type Product = {
   standard?: string
   voltage?: string
   tempRange?: string
+  measurements?: string
+  dimensionCharts?: Array<{ label: string; image: string }>
   image: string
 }
 

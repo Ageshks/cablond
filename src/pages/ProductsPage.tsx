@@ -131,7 +131,7 @@ export function ProductsPage({
             {filteredProducts.map(p => (
               <div className="card-clean product-card" key={p.slug}>
                 <div className="product-card-media">
-                  <img src={p.image} alt={p.name} />
+                  <img src={p.image} alt={`${p.name} product illustration and dimensions`} style={{ objectFit: 'contain', padding: '12px', background: '#fff' }} />
                   <span className="product-category-tag">{p.category}</span>
                   <span className="product-sub-tag">{p.subcategory}</span>
                 </div>

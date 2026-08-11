@@ -401,9 +401,9 @@ export function App() {
               </div>
 
               <div className="modal-body">
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: '28px', marginBottom: '28px' }}>
-                  <div style={{ borderRadius: '20px', overflow: 'hidden', height: '230px', border: '1px solid var(--border)' }}>
-                    <img src={selectedProduct.image} alt={selectedProduct.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                <div className="product-preview-grid">
+                  <div className="product-preview-image">
+                    <img src={selectedProduct.image} alt={selectedProduct.name} />
                   </div>
                   <div>
                     <h3 style={{ fontSize: '18px', fontWeight: '700', color: 'var(--secondary)', marginBottom: '8px' }}>
@@ -415,6 +415,22 @@ export function App() {
                     <p style={{ fontSize: '13px', color: 'var(--text-primary)', background: 'var(--bg-alt)', padding: '12px', borderRadius: '12px', border: '1px solid var(--border)' }}>
                       <strong>Target Application:</strong> {selectedProduct.applications}
                     </p>
+                    <div className="product-preview-actions">
+                      <button
+                        className="btn btn-secondary btn-sm"
+                        onClick={() => { setSelectedProduct(null); navigateTo(`/products/${selectedProduct.slug}`) }}
+                      >
+                        <span>Full Specification Page</span>
+                        <ExternalLink size={14} />
+                      </button>
+                      <button
+                        className="btn btn-primary btn-sm"
+                        onClick={() => { setSelectedProduct(null); navigateTo('/contact') }}
+                      >
+                        <span>Request Spec Quote</span>
+                        <ArrowUpRight size={16} />
+                      </button>
+                    </div>
                   </div>
                 </div>
 
@@ -431,23 +447,6 @@ export function App() {
                     {selectedProduct.tempRange && <tr><th>Operating Temp</th><td>{selectedProduct.tempRange}</td></tr>}
                   </tbody>
                 </table>
-
-                <div style={{ marginTop: '32px', display: 'flex', gap: '16px', justifyContent: 'flex-end' }}>
-                  <button
-                    className="btn btn-secondary btn-sm"
-                    onClick={() => { setSelectedProduct(null); navigateTo(`/products/${selectedProduct.slug}`) }}
-                  >
-                    <span>Full Specification Page</span>
-                    <ExternalLink size={14} />
-                  </button>
-                  <button
-                    className="btn btn-primary btn-sm"
-                    onClick={() => { setSelectedProduct(null); navigateTo('/contact') }}
-                  >
-                    <span>Request Spec Quote</span>
-                    <ArrowUpRight size={16} />
-                  </button>
-                </div>
               </div>
             </motion.div>
           </motion.div>
