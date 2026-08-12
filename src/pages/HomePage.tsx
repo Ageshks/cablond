@@ -26,6 +26,7 @@ import {
 import { AnimatedNumber } from '../components/AnimatedNumber'
 import { LazyImage } from '../components/LazyImage'
 import { products, regionalMarkets as allRegions } from '../data/catalog'
+import heroImage from '../assets/hero.png'
 import type { Product, RegionalMarket } from '../types'
 
 interface HomePageProps {
@@ -127,8 +128,10 @@ export function HomePage({ onOpenProduct, activeRegion, setActiveRegion }: HomeP
       <section style={{
         position: 'relative',
         width: '100%',
-        height: 'calc(100vh - 90px)',
+        height: '100vh',
         minHeight: '600px',
+        marginTop: 'calc(-1 * var(--header-h))',
+        paddingTop: 'var(--header-h)',
         overflow: 'hidden',
         display: 'flex',
         alignItems: 'center',
@@ -138,7 +141,7 @@ export function HomePage({ onOpenProduct, activeRegion, setActiveRegion }: HomeP
       >
         {/* Static image fill */}
         <img
-          src="https://images.unsplash.com/photo-1586864387789-628af9feed72?auto=format&fit=crop&w=1920&q=85"
+          src={heroImage}
           alt="Cablond precision cable terminations"
           style={{
             position: 'absolute',

@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Search, ArrowUpRight, ChevronDown, ChevronRight, SlidersHorizontal } from 'lucide-react'
 import { navigationTree, products } from '../data/catalog'
 import type { Product } from '../types'
+import aboutImage from '../assets/about.png'
 
 interface ProductsPageProps {
   selectedMainCat: string
@@ -27,14 +28,48 @@ export function ProductsPage({
   const [expandedCategory, setExpandedCategory] = useState<string | null>(null)
   return (
     <section className="catalog-section">
-      <div style={{ textAlign: 'center', maxWidth: '760px', margin: '0 auto 40px' }}>
-        <span className="eyebrow-badge">PRODUCT CATALOG NAVIGATION</span>
-        <h1 className="section-title" style={{ marginTop: '12px' }}>
-          Explore Cablond <em>product tree.</em>
-        </h1>
-        <p className="body-text" style={{ marginTop: '14px' }}>
-          Select a main category or subcategory from the hierarchy below to inspect technical specifications and cable termination hardware.
-        </p>
+      {/* ── HERO IMAGE COVER ─────────────────────────────────────────────── */}
+      <div style={{
+        position: 'relative',
+        width: '100%',
+        height: 'min(62vh, 560px)',
+        minHeight: '320px',
+        overflow: 'hidden',
+        borderRadius: '24px',
+        marginBottom: '48px'
+      }}>
+        <img
+          src={aboutImage}
+          alt="Cablond products hero"
+          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+        />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(15,23,42,0.55) 0%, rgba(15,23,42,0.35) 100%)' }} />
+        <div style={{
+          position: 'absolute',
+          inset: 0,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          flexDirection: 'column',
+          textAlign: 'center',
+          padding: '0 5vw',
+          color: '#FFFFFF'
+        }}>
+          <span className="eyebrow-badge" style={{ background: 'rgba(184,115,51,0.35)', borderColor: 'rgba(184,115,51,0.6)', color: '#F5C79A' }}>PRODUCT CATALOG</span>
+          <h1 style={{
+            fontSize: 'clamp(34px, 5vw, 60px)',
+            fontWeight: 800,
+            lineHeight: 1.08,
+            letterSpacing: '-0.03em',
+            marginTop: '16px',
+            textShadow: '0 4px 40px rgba(0,0,0,0.4)'
+          }}>
+            Explore Cablond <em style={{ color: 'var(--copper-light)', fontStyle: 'normal' }}>product tree.</em>
+          </h1>
+          <p style={{ color: 'rgba(255,255,255,0.82)', fontSize: '17px', lineHeight: 1.7, marginTop: '18px', maxWidth: '680px' }}>
+            Select a main category or subcategory from the hierarchy below to inspect technical specifications and cable termination hardware.
+          </p>
+        </div>
       </div>
 
       <div className="catalog-layout">

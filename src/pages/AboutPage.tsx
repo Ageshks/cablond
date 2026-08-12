@@ -1,5 +1,6 @@
 import { LazyImage } from '../components/LazyImage'
 import { CheckCircle2, Award, Factory, Globe2, ShieldCheck, ArrowUpRight } from 'lucide-react'
+import aboutImage from '../assets/about.png'
 
 const aboutSections = [
   {
@@ -98,7 +99,7 @@ export function AboutPage() {
           <div style={{ position: 'relative' }}>
             <div style={{ borderRadius: '24px', overflow: 'hidden', height: '420px', boxShadow: '0 30px 60px rgba(0,0,0,0.4)', border: '1px solid rgba(255,255,255,0.15)' }}>
               <LazyImage
-                src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1200&q=85"
+                src={aboutImage}
                 alt="Cablond precision manufacturing"
                 style={{ width: '100%', height: '100%', objectFit: 'cover' }}
               />
