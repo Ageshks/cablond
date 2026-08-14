@@ -56,7 +56,7 @@ export function AboutPage() {
         <div style={{ position: 'absolute', width: '500px', height: '500px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(184,115,51,0.2) 0%, transparent 70%)', right: '-100px', top: '-100px', pointerEvents: 'none' }} />
         <div style={{ position: 'absolute', width: '400px', height: '400px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(184,115,51,0.12) 0%, transparent 70%)', left: '-80px', bottom: '-120px', pointerEvents: 'none' }} />
 
-        <div style={{ maxWidth: '1280px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: '60px', alignItems: 'center', position: 'relative', zIndex: 2 }}>
+        <div className="about-page-grid" style={{ maxWidth: '1280px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: '60px', alignItems: 'center', position: 'relative', zIndex: 2 }}>
           {/* Left: headline + intro, left-aligned */}
           <div style={{ textAlign: 'left' }}>
             <span className="eyebrow-badge" style={{ background: 'rgba(184,115,51,0.2)', borderColor: 'rgba(184,115,51,0.4)', color: 'var(--copper-light)' }}>
@@ -68,6 +68,7 @@ export function AboutPage() {
               lineHeight: 1.08,
               letterSpacing: '-0.03em',
               marginTop: '18px',
+              color: '#FFFFFF',
               textShadow: '0 4px 40px rgba(0,0,0,0.3)'
             }}>
               Focused on the art of <em style={{ color: 'var(--copper-light)', fontStyle: 'normal' }}>connection.</em>
@@ -97,7 +98,7 @@ export function AboutPage() {
 
           {/* Right: image card */}
           <div style={{ position: 'relative' }}>
-            <div style={{ borderRadius: '24px', overflow: 'hidden', height: '420px', boxShadow: '0 30px 60px rgba(0,0,0,0.4)', border: '1px solid rgba(255,255,255,0.15)' }}>
+            <div className="about-section-image" style={{ borderRadius: '24px', overflow: 'hidden', height: '420px', boxShadow: '0 30px 60px rgba(0,0,0,0.4)', border: '1px solid rgba(255,255,255,0.15)' }}>
               <LazyImage
                 src={aboutImage}
                 alt="Cablond precision manufacturing"
@@ -106,11 +107,11 @@ export function AboutPage() {
               <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, transparent 40%, rgba(15,23,42,0.9) 100%)' }} />
               <div style={{ position: 'absolute', bottom: '24px', left: '24px', right: '24px' }}>
                 <div style={{ fontSize: '13px', fontWeight: 700, color: 'var(--copper-light)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>ISO 9001:2000 Certified Facility</div>
-                <div style={{ fontSize: '22px', fontWeight: 800, marginTop: '6px' }}>Precision Copper Terminations</div>
+                <div style={{ fontSize: '22px', fontWeight: 800, marginTop: '6px', color: '#FFFFFF' }}>Precision Copper Terminations</div>
               </div>
             </div>
             {/* Floating badge */}
-            <div style={{
+            <div className="about-hero-badge" style={{
               position: 'absolute',
               top: '-18px',
               right: '-18px',
@@ -153,7 +154,7 @@ export function AboutPage() {
 
       {/* ── Company Story Section ───────────────────────────────────────── */}
       <section style={{ maxWidth: '1280px', margin: '0 auto 100px', padding: '0 5vw' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '60px', alignItems: 'center' }}>
+        <div className="about-story-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '60px', alignItems: 'center' }}>
           <div>
             <span className="eyebrow-badge-gold">WHY CABLOND</span>
             <h2 className="section-title" style={{ marginTop: '14px' }}>
@@ -180,7 +181,7 @@ export function AboutPage() {
               ))}
             </div>
           </div>
-          <div style={{ borderRadius: '24px', overflow: 'hidden', height: '400px', boxShadow: '0 15px 35px rgba(15,23,42,0.1)' }}>
+          <div className="about-story-image" style={{ borderRadius: '24px', overflow: 'hidden', height: '400px', boxShadow: '0 15px 35px rgba(15,23,42,0.1)' }}>
             <LazyImage src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1000&q=80" alt="Cablond quality laboratory" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
           </div>
         </div>
@@ -188,7 +189,7 @@ export function AboutPage() {
 
       {/* ── Heritage Stats Banner ───────────────────────────────────────── */}
       <section style={{ maxWidth: '1280px', margin: '0 auto 80px', padding: '0 5vw' }}>
-        <div className="card-clean" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '30px', padding: '36px 40px', background: 'var(--secondary)', color: '#FFFFFF', borderRadius: '24px' }}>
+        <div className="card-clean about-stats-banner" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '30px', padding: '36px 40px', background: 'var(--secondary)', color: '#FFFFFF', borderRadius: '24px' }}>
           <div style={{ textAlign: 'center' }}>
             <span style={{ fontSize: '36px', fontWeight: 800, color: 'var(--copper-light)' }}>30+</span>
             <p style={{ fontSize: '14px', color: '#94A3B8', marginTop: '4px' }}>Years Engineering Heritage</p>
@@ -216,6 +217,7 @@ export function AboutPage() {
             return (
               <div
                 key={sec.tag}
+                className="about-alternating-grid"
                 style={{
                   display: 'grid',
                   gridTemplateColumns: '1fr 1fr',
@@ -226,6 +228,7 @@ export function AboutPage() {
               >
                 {/* Image side */}
                 <div
+                  className="about-alternating-image"
                   style={{
                     borderRadius: '24px',
                     overflow: 'hidden',

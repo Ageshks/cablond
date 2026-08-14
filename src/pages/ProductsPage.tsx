@@ -62,6 +62,7 @@ export function ProductsPage({
             lineHeight: 1.08,
             letterSpacing: '-0.03em',
             marginTop: '16px',
+            color: '#FFFFFF',
             textShadow: '0 4px 40px rgba(0,0,0,0.4)'
           }}>
             Explore Cablond <em style={{ color: 'var(--copper-light)', fontStyle: 'normal' }}>product tree.</em>

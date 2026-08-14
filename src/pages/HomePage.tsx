@@ -255,7 +255,7 @@ export function HomePage({ onOpenProduct, activeRegion, setActiveRegion }: HomeP
 
       {/* ── DEDICATED INDUSTRIAL VIDEO SHOWCASE BANNER ─────────────────────────── */}
       <section style={{ maxWidth: '1280px', margin: '120px auto 100px', padding: '0 5vw' }}>
-        <div className="card-clean" style={{ position: 'relative', borderRadius: '28px', overflow: 'hidden', height: '480px', border: '1px solid var(--border)', boxShadow: '0 25px 50px rgba(15,23,42,0.12)' }}>
+        <div className="card-clean video-showcase-banner" style={{ position: 'relative', borderRadius: '28px', overflow: 'hidden', height: '480px', border: '1px solid var(--border)', boxShadow: '0 25px 50px rgba(15,23,42,0.12)' }}>
           <LazyImage
             src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1600&q=85"
             alt="Inside Precision Manufacturing Plant"
@@ -264,7 +264,7 @@ export function HomePage({ onOpenProduct, activeRegion, setActiveRegion }: HomeP
           
           <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(15,23,42,0.92) 0%, rgba(15,23,42,0.4) 60%, rgba(15,23,42,0.15) 100%)' }} />
 
-          <div style={{ position: 'absolute', inset: 0, padding: '50px 60px', display: 'flex', flexDirection: 'column', justifyContent: 'center', maxWidth: '640px', color: '#FFFFFF', zIndex: 2 }}>
+          <div className="video-showcase-content" style={{ position: 'absolute', inset: 0, padding: '50px 60px', display: 'flex', flexDirection: 'column', justifyContent: 'center', maxWidth: '640px', color: '#FFFFFF', zIndex: 2 }}>
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(184, 115, 51, 0.2)', border: '1px solid rgba(184, 115, 51, 0.4)', padding: '6px 14px', borderRadius: '9999px', width: 'fit-content', marginBottom: '20px' }}>
               <Clapperboard size={16} color="var(--copper-light)" />
               <span style={{ fontSize: '12px', fontWeight: 700, color: 'var(--copper-light)', letterSpacing: '0.08em' }}>INDUSTRIAL TECHNOLOGY STREAM</span>
@@ -346,7 +346,7 @@ export function HomePage({ onOpenProduct, activeRegion, setActiveRegion }: HomeP
           </p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '24px' }}>
+        <div className="category-covers" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '24px' }}>
           {categoryCovers.map(cat => {
             const IconC = cat.icon
             return (
@@ -374,7 +374,7 @@ export function HomePage({ onOpenProduct, activeRegion, setActiveRegion }: HomeP
                   e.currentTarget.style.boxShadow = '0 10px 30px rgba(15, 23, 42, 0.06)'
                 }}
               >
-                <div style={{ position: 'relative', height: '220px', overflow: 'hidden', background: '#FAFAFA' }}>
+                <div className="category-cover-media" style={{ position: 'relative', height: '220px', overflow: 'hidden', background: '#FAFAFA' }}>
                   <LazyImage
                     src={cat.image}
                     alt={cat.category}
@@ -530,7 +530,7 @@ export function HomePage({ onOpenProduct, activeRegion, setActiveRegion }: HomeP
                   <div style={{ width: '42px', height: '42px', borderRadius: '12px', background: 'rgba(255, 255, 255, 0.15)', backdropFilter: 'blur(10px)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '12px' }}>
                     <IconComponent size={22} color="#FFFFFF" />
                   </div>
-                  <h3 style={{ fontSize: '20px', fontWeight: 700, marginBottom: '6px' }}>{ind.title}</h3>
+                  <h3 style={{ fontSize: '20px', fontWeight: 700, marginBottom: '6px', color: '#FFFFFF' }}>{ind.title}</h3>
                   <p style={{ fontSize: '13px', color: '#CBD5E1', lineHeight: 1.4 }}>{ind.desc}</p>
                 </div>
               </div>
@@ -542,7 +542,7 @@ export function HomePage({ onOpenProduct, activeRegion, setActiveRegion }: HomeP
       {/* ── QUALITY SECTION ───────────────────────────────── */}
       <section style={{ background: 'var(--surface-alt)', padding: '80px 0', borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)', marginBottom: '80px' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 5vw' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '60px', alignItems: 'center' }}>
+          <div className="quality-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '60px', alignItems: 'center' }}>
             <div>
               <span className="eyebrow-badge eyebrow-badge-gold">QUALITY ASSURANCE</span>
               <h2 className="section-title" style={{ marginTop: '14px' }}>
@@ -560,7 +560,7 @@ export function HomePage({ onOpenProduct, activeRegion, setActiveRegion }: HomeP
                 ))}
               </div>
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+            <div className="quality-images" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
               <div style={{ borderRadius: '16px', overflow: 'hidden', height: '220px', boxShadow: '0 10px 25px rgba(0,0,0,0.08)' }}>
                 <LazyImage src="https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=600&q=80" alt="Quality Inspection" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               </div>
@@ -632,7 +632,7 @@ export function HomePage({ onOpenProduct, activeRegion, setActiveRegion }: HomeP
       <section className="catalogue-banner">
         <div className="catalogue-card">
           <div>
-            <span className="eyebrow-badge eyebrow-badge-gold">TECHNICAL CATALOGUE</span>
+            <span className="eyebrow-badge eyebrow-badge-gold" style={{ background: 'rgba(184,115,51,0.35)', borderColor: 'rgba(184,115,51,0.6)', color: '#F5C79A' }}>TECHNICAL CATALOGUE</span>
             <h2 className="section-title" style={{ color: '#FFFFFF', marginTop: '12px' }}>
               Everything you need in <em>one reference guide.</em>
             </h2>

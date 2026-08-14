@@ -36,7 +36,7 @@ export function ContactPage({ onTriggerToast }: ContactPageProps) {
         </p>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.1fr', gap: '48px', alignItems: 'start', marginBottom: '80px' }}>
+      <div className="contact-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1.1fr', gap: '48px', alignItems: 'start', marginBottom: '80px' }}>
         {/* Left: Info panel */}
         <div>
           <div className="card-clean" style={{ padding: '36px', background: 'var(--secondary)', color: '#FFFFFF', borderRadius: '24px', marginBottom: '24px' }}>

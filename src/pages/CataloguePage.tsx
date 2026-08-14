@@ -19,7 +19,10 @@ export function CataloguePage({ onTriggerToast }: CataloguePageProps) {
 
       <div className="catalogue-card" style={{ marginBottom: '60px' }}>
         <div>
-          <span className="eyebrow-badge eyebrow-badge-gold">2026 / 2027 EDITION</span>
+          <span
+            className="eyebrow-badge eyebrow-badge-gold"
+            style={{ background: 'rgba(184,115,51,0.35)', borderColor: 'rgba(184,115,51,0.6)', color: '#F5C79A' }}
+          >MASTER CATALOGUE</span>
           <h2 className="section-title" style={{ color: '#FFFFFF', marginTop: '12px' }}>
             Download PDF <em>Master Catalogue</em>
           </h2>

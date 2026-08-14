@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { ArrowUpRight, FileText, ShieldCheck, Zap, Award, CheckCircle2, ZoomIn, X } from 'lucide-react'
 import { products } from '../data/catalog'
 import { LazyImage } from '../components/LazyImage'
@@ -21,9 +21,21 @@ export function ProductDetailPage({ slug, onOpenQuote }: ProductDetailPageProps)
   ]
 
   const [activeView, setActiveView] = useState(galleryViews[0])
-  const [isZoomed, setIsZoomed] = useState(false)
   const [isChartZoomed, setIsChartZoomed] = useState(false)
   const isDimensionChart = activeView.id.startsWith('dimensions-')
+
+  // Amazon / Flipkart style zoom: image magnifies and pans to follow the cursor.
+  const galleryRef = useRef<HTMLDivElement>(null)
+  const [zoomOrigin, setZoomOrigin] = useState<{ x: number; y: number } | null>(null)
+
+  const handleGalleryMouseMove = (e: React.MouseEvent) => {
+    const el = galleryRef.current
+    if (!el) return
+    const rect = el.getBoundingClientRect()
+    const x = ((e.clientX - rect.left) / rect.width) * 100
+    const y = ((e.clientY - rect.top) / rect.height) * 100
+    setZoomOrigin({ x, y })
+  }
 
   return (
     <div style={{ maxWidth: '1280px', margin: '40px auto 100px', padding: '0 5vw' }}>
@@ -50,8 +62,9 @@ export function ProductDetailPage({ slug, onOpenQuote }: ProductDetailPageProps)
               background: '#FFFFFF',
               border: '1px solid var(--border)'
             }}
-            onMouseEnter={() => setIsZoomed(true)}
-            onMouseLeave={() => setIsZoomed(false)}
+            ref={galleryRef}
+            onMouseMove={handleGalleryMouseMove}
+            onMouseLeave={() => setZoomOrigin(null)}
             onClick={() => isDimensionChart && setIsChartZoomed(true)}
           >
             <LazyImage
@@ -61,13 +74,14 @@ export function ProductDetailPage({ slug, onOpenQuote }: ProductDetailPageProps)
               style={{
                 width: '100%',
                 height: '100%',
-                transform: !isDimensionChart && isZoomed ? 'scale(1.25)' : 'scale(1)',
-                transition: 'transform 0.4s ease'
+                transform: zoomOrigin ? 'scale(2.4)' : 'scale(1)',
+                transformOrigin: zoomOrigin ? `${zoomOrigin.x}% ${zoomOrigin.y}%` : 'center',
+                transition: 'transform 0.15s ease-out, transform-origin 0.05s linear'
               }}
             />
             <div style={{ position: 'absolute', bottom: '16px', right: '16px', background: 'rgba(15, 23, 42, 0.75)', backdropFilter: 'blur(8px)', color: '#FFF', padding: '6px 12px', borderRadius: '9999px', fontSize: '12px', display: 'flex', alignItems: 'center', gap: '6px' }}>
               <ZoomIn size={14} />
-              <span>{isDimensionChart ? 'Click to Zoom' : 'Hover to Zoom'}</span>
+              <span>{isDimensionChart ? 'Hover to Zoom · Click to enlarge' : 'Hover to Zoom'}</span>
             </div>
           </div>
 

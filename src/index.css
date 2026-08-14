@@ -1163,6 +1163,7 @@ h1, h2, h3, h4, .font-heading {
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  white-space: nowrap;
   transition: gap 0.2s;
 }
 
@@ -1551,7 +1552,7 @@ h1, h2, h3, h4, .font-heading {
 /* Corporate Footer */
 .footer {
   background: var(--secondary);
-  color: #94A3B8;
+  color: #FFFFFF;
   padding: 80px 5vw 36px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -1594,7 +1595,7 @@ h1, h2, h3, h4, .font-heading {
 
 .footer-links a {
   font-size: 14px;
-  color: #94A3B8;
+  color: #FFFFFF;
   transition: color 0.2s;
 }
 
@@ -1611,7 +1612,7 @@ h1, h2, h3, h4, .font-heading {
   align-items: center;
   justify-content: space-between;
   font-size: 13px;
-  color: #64748B;
+  color: #FFFFFF;
 }
 
 /* ── RESPONSIVE MEDIA QUERIES ─────────────────────────────────── */
@@ -2308,5 +2309,92 @@ Mobile |
     flex-direction: column;
     gap: 16px;
     align-items: flex-start;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   Responsive card grids — applied classes added to page JSX
+   ══════════════════════════════════════════════════════════════ */
+
+/* Home: product category cards (4 → 2 → 1 columns) */
+@media (max-width: 1024px) {
+  .category-covers {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .category-covers {
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+  }
+
+  .category-cover-media {
+    height: 190px !important;
+  }
+
+  /* Home: video showcase banner */
+  .video-showcase-banner {
+    height: auto !important;
+    min-height: 460px !important;
+  }
+
+  .video-showcase-content {
+    padding: 34px 22px !important;
+  }
+
+  /* About: hero floating badge stays inside the card */
+  .about-hero-badge {
+    right: 12px !important;
+    top: -12px !important;
+    padding: 12px 16px !important;
+  }
+}
+
+/* About: company story + alternating sections stack */
+@media (max-width: 768px) {
+  .about-story-grid {
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+  }
+
+  .about-alternating-grid {
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+  }
+
+  .about-alternating-image {
+    height: 300px !important;
+  }
+
+  /* About: heritage stats banner 4 → 2 columns */
+  .about-stats-banner {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 24px !important;
+    padding: 30px 24px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .about-story-image {
+    height: 240px !important;
+  }
+
+  .about-alternating-image {
+    height: 240px !important;
+  }
+
+  .about-stats-banner {
+    padding: 26px 20px !important;
+  }
+
+  .about-stats-banner span {
+    font-size: 30px !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .about-stats-banner {
+    grid-template-columns: 1fr !important;
   }
 }

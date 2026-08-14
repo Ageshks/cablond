@@ -28,6 +28,7 @@ import chart12 from '../assets/charts/page-12.png'
 import chart13 from '../assets/charts/page-13.png'
 import chart14 from '../assets/charts/page-14.png'
 import chart16 from '../assets/charts/page-16.png'
+import chart17 from '../assets/charts/page-17.png'
 import chart18 from '../assets/charts/page-18.png'
 import chart19 from '../assets/charts/page-19.png'
 import chart20 from '../assets/charts/page-20.png'
@@ -56,6 +57,7 @@ const dimensionCharts = {
   splitBolt: [{ label: 'Dimensions', image: splitBoltChart }],
   cType: [{ label: 'Dimensions', image: cTypeChart }],
   aluminium: [{ label: 'Dimensions', image: chart16 }],
+  aluminiumConnectors: [{ label: 'Dimensions', image: chart17 }],
   mechanical: [{ label: 'Dimensions', image: chart18 }],
   bw: [{ label: 'Dimensions', image: chart19 }],
   cw: [{ label: 'Dimensions', image: chart20 }],
@@ -90,7 +92,7 @@ export const navigationTree = [
   {
     category: 'Connectors' as MainCategory,
     icon: LinkIcon,
-    subcategories: ['Ferrules', 'Screw Connectors']
+    subcategories: ['Ferrules', 'Screw Connectors', 'Aluminium Connectors']
   },
   {
     category: 'Cable Glands' as MainCategory,
@@ -352,6 +354,24 @@ export const products: Product[] = [
     measurements: 'Cable size 10–300 mm²; barrel Ø4.4–23.5 mm; length (L) 30–65 mm; 2 or 4 screws.',
     dimensionCharts: dimensionCharts.screwConnectors,
     image: screwConnectors
+  },
+  {
+    slug: 'aluminium-connectors',
+    name: 'Aluminium Connectors',
+    category: 'Connectors',
+    subcategory: 'Aluminium Connectors',
+    description:
+      'High-conductivity aluminium compression and mechanical connectors engineered for splicing aluminium power conductors and busbar joints.',
+    applications:
+      'Aluminium conductor splicing, busbar joints, and termination in overhead lines and distribution sub-stations.',
+    material: '99.5% Electrolytic Grade Aluminium',
+    finish: 'Bright or Electro-Tin Plated (oxide-inhibiting compound filled)',
+    standard: 'IEC 61238 / IS 8309',
+    voltage: 'Up to 36 kV',
+    tempRange: '-40°C to +130°C',
+    measurements: 'Conductor range 10–1000 mm²; palm and barrel profiles as illustrated in the catalogue.',
+    dimensionCharts: dimensionCharts.aluminiumConnectors,
+    image: aluminiumCableTerminals
   },
 
   // CABLE GLANDS
