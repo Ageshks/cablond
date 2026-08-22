@@ -15,6 +15,14 @@
 
 const BASE = import.meta.env.BASE_URL
 
+/**
+ * Versioned logo URL – cache-buster.
+ * public/logo.png keeps the same URL across deploys (unlike hashed JS/CSS),
+ * so browsers/CDNs keep serving the stale logo. Bump "v" whenever the logo
+ * changes and redeploy. DO NOT remove the query string.
+ */
+const LOGO_URL = `${BASE}logo.png?v=2`
+
 import { useEffect, useMemo, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import {
@@ -137,7 +145,7 @@ export function App() {
       <header className={`site-header ${isScrolled ? 'scrolled' : ''}`}>
         {/* Brand logo — outside the nav pill, top left */}
         <a href="#/" className="brand-logo">
-          <img src={`${BASE}logo.png`} alt="Cablond Brand Logo" />
+          <img src={LOGO_URL} alt="Cablond Brand Logo" />
         </a>
 
         {/* Centered nav pill — navigation items only */}
@@ -477,7 +485,7 @@ export function App() {
         <div className="footer-grid">
           <div className="footer-brand">
             <div className="brand">
-              <img src={`${BASE}logo.png`} alt="Cablond Logo" />
+              <img src={LOGO_URL} alt="Cablond Logo" />
             </div>
             <p>
               Cablond is a premier industrial brand, manufacturing precision cable lugs, cable glands,
