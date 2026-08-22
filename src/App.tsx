@@ -44,6 +44,9 @@ import { CataloguePage }    from './pages/CataloguePage'
 import { ContactPage }      from './pages/ContactPage'
 import { CertificationsPage } from './pages/CertificationsPage'
 
+// Components
+import { WhatsAppButton } from './components/WhatsAppButton'
+
 import './App.css'
 
 export function App() {
@@ -308,6 +311,9 @@ export function App() {
         {currentPath === '/certifications' && <CertificationsPage />}
         {currentPath === '/contact'   && <ContactPage   onTriggerToast={triggerToast} />}
       </main>
+
+      {/* ── WhatsApp floating chat button (global, every page) ── */}
+      <WhatsAppButton />
 
       {/* ── Global search modal (Cmd+K) ──────────────────── */}
       <AnimatePresence>
