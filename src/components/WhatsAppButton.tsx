@@ -4,15 +4,15 @@ import { motion } from 'framer-motion'
  * WhatsAppButton – floating WhatsApp chat button shown on every page.
  *
  * ── CONFIG ────────────────────────────────────────────────────────────────
- * Replace WHATSAPP_NUMBER with the real export desk number in full
- * international format WITHOUT "+", spaces or dashes.
- *   e.g. +91 98765 43210   →  `91XXXXXXXXXX`
+ * WHATSAPP_NUMBER is already set to the active WhatsApp business line.
+ * Full international format WITHOUT "+", spaces or dashes –
+ *   0524709704 (UAE) → 971524709704
  *
  * WHATSAPP_MESSAGE is the pre-filled text the visitor sends when they tap
  * the button.
  * ─────────────────────────────────────────────────────────────────────────
  */
-const WHATSAPP_NUMBER = '91XXXXXXXXXX'
+const WHATSAPP_NUMBER = '971524709704'
 const WHATSAPP_MESSAGE = 'Hello Cablond! I\u2019d like to enquire about your cable terminations & accessories.'
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`
 
