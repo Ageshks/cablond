@@ -199,6 +199,15 @@ button {
   filter: drop-shadow(0 6px 16px rgba(0,0,0,0.12));
 }
 
+/* White logo variant — applied by JS (`.logo-on-dark`) only while the sticky
+   transparent header sits on top of the dark home cover photo, whose copper
+   shades match the logo and make it hard to see. brightness(0) flattens every
+   opaque pixel to black, then invert(1) flips them to pure white while keeping
+   the PNG's transparency. Reverts automatically once the hero scrolls past. */
+.site-header.logo-on-dark .brand-logo img {
+  filter: brightness(0) invert(1) drop-shadow(0 2px 10px rgba(0,0,0,0.45));
+}
+
 /* Centered floating island — frosted pill holding all nav items */
 .navbar {
   position: absolute;

@@ -71,6 +71,19 @@ export function App() {
   const [megaMenuOpen, setMegaMenuOpen]       = useState(false)
   const [hoveredCategory, setHoveredCategory] = useState<string | null>(null)
 
+  // ── Logo contrast (white over the dark home hero) ───────────
+  // The dark home cover photo shares the logo's copper shades, hiding it.
+  // While on the home route and the hero still sits behind the transparent
+  // header (< viewport - header height), render the logo white; restore the
+  // original logo shades on every other page / once the hero scrolls past.
+  const isHomeRoute = (hash: string) => {
+    const path = hash.slice(1)
+    return path === '' || path === '/'
+  }
+  const [logoOnDark, setLogoOnDark] = useState(() =>
+    isHomeRoute(location.hash) && window.scrollY < Math.max(window.innerHeight - 200, 0)
+  )
+
   // ── Routing & scroll listener ────────────────────────
   useEffect(() => {
     const onHashChange = () => {
@@ -78,8 +91,13 @@ export function App() {
       setMobileMenuOpen(false)
       setMegaMenuOpen(false)
       window.scrollTo({ top: 0, behavior: 'smooth' })
+      setLogoOnDark(isHomeRoute(location.hash))
     }
-    const onScroll = () => setIsScrolled(window.scrollY > 40)
+    const onScroll = () => {
+      setIsScrolled(window.scrollY > 40)
+      const heroBehindHeader = window.scrollY < Math.max(window.innerHeight - 200, 0)
+      setLogoOnDark(isHomeRoute(location.hash) && heroBehindHeader)
+    }
 
     window.addEventListener('hashchange', onHashChange)
     window.addEventListener('scroll', onScroll)
@@ -142,7 +160,7 @@ export function App() {
       <div className="subtle-grid" />
 
       {/* ── Sticky frosted-glass navbar ──────────────────── */}
-      <header className={`site-header ${isScrolled ? 'scrolled' : ''}`}>
+      <header className={`site-header ${isScrolled ? 'scrolled' : ''} ${logoOnDark ? 'logo-on-dark' : ''}`}>
         {/* Brand logo — outside the nav pill, top left */}
         <a href="#/" className="brand-logo">
           <img src={LOGO_URL} alt="Cablond Brand Logo" />
