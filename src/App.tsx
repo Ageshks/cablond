@@ -333,7 +333,7 @@ export function App() {
           />
         )}
 
-        {currentPath === '/catalogue' && <CataloguePage onTriggerToast={triggerToast} />}
+        {currentPath === '/catalogue' && <CataloguePage />}
         {currentPath === '/certifications' && <CertificationsPage />}
         {currentPath === '/contact'   && <ContactPage   onTriggerToast={triggerToast} />}
       </main>

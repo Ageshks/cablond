@@ -1,10 +1,6 @@
 import { Download } from 'lucide-react'
 
-interface CataloguePageProps {
-  onTriggerToast: (msg: string) => void
-}
-
-export function CataloguePage({ onTriggerToast }: CataloguePageProps) {
+export function CataloguePage() {
   return (
     <div style={{ maxWidth: '1280px', margin: '40px auto 100px', padding: '0 5vw' }}>
       <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 50px' }}>
@@ -29,13 +25,14 @@ export function CataloguePage({ onTriggerToast }: CataloguePageProps) {
           <p style={{ color: '#CBD5E1', fontSize: '16px', margin: '16px 0 28px' }}>
             Includes cable lugs, ferrules, BW/CW/E1W glands, flexible conduits, and compliance charts.
           </p>
-          <button
+          <a
             className="btn btn-accent btn-lg"
-            onClick={() => onTriggerToast('Cablond PDF Catalogue download initiated.')}
+            href={`${import.meta.env.BASE_URL}Cablond_compressed.pdf`}
+            download="Cablond-Master-Catalogue.pdf"
           >
             <Download size={20} />
-            <span>Download Catalogue PDF (8.4 MB)</span>
-          </button>
+            <span>Download Catalogue PDF (2.9 MB)</span>
+          </a>
         </div>
 
         <div className="catalogue-mockup">

@@ -639,7 +639,11 @@ export function HomePage({ onOpenProduct, activeRegion, setActiveRegion }: HomeP
             <p style={{ color: '#CBD5E1', fontSize: '17px', margin: '20px 0 32px', maxWidth: '480px' }}>
               Download the complete Cablond Technical Catalogue featuring full dimensional tables, crimp die selection guides, and part numbers.
             </p>
-            <a href="#/catalogue" className="btn btn-accent btn-lg">
+            <a
+              href={`${import.meta.env.BASE_URL}Cablond_compressed.pdf`}
+              download="Cablond-Master-Catalogue.pdf"
+              className="btn btn-accent btn-lg"
+            >
               <Download size={20} />
               <span>Get Digital Catalogue</span>
             </a>
